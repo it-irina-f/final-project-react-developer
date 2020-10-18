@@ -1,0 +1,8 @@
+node_modules
+.idea/
+dist
+.history
+storybook-static
+
+# stryker temp files
+.stryker-tmp

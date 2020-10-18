@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "types/*": ["src/types/*"],
+      "components/*": ["src/components/*"],
+      "@/*": ["src/*"]
+    },
+    "target": "es5",
+    "downlevelIteration": true,
+    "module": "commonjs",
+    "allowJs": true,
+    "jsx": "react",
+    "sourceMap": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false
+  }
+}
