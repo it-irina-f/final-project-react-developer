@@ -1,0 +1,42 @@
+export const mockTransactions = {
+  1603380600000: {
+    amount: "8000",
+    category: "ЖКХ",
+    account: "Карта Сбербанк",
+    isIncome: false,
+    isOutgo: true,
+    comment: "",
+  },
+  1603394400000: {
+    amount: "3200",
+    category: "Продукты",
+    account: "Карта ВТБ",
+    isIncome: false,
+    isOutgo: true,
+    comment: "",
+  },
+  1603474740000: {
+    amount: "1350",
+    category: "Кафе/рестораны",
+    account: "Карта ВТБ",
+    isIncome: false,
+    isOutgo: true,
+    comment: "",
+  },
+  1603444800000: {
+    amount: "90000",
+    category: "Зарплата",
+    account: "Карта ВТБ",
+    isIncome: true,
+    isOutgo: false,
+    comment: "зп за октябрь",
+  },
+  1603545780000: {
+    amount: "820",
+    category: "Cashback",
+    account: "Карта Сбербанк",
+    isIncome: true,
+    isOutgo: false,
+    comment: "",
+  },
+};
