@@ -6,12 +6,14 @@ import { authSlice, getAuthModule } from "@/modules/Auth";
 import { accountsSlice } from "@/modules/Accounts";
 import { categoriesSlice } from "@/modules/Categories";
 import { transactionsSlice } from "@/modules/Transactions";
+import { statisticsSlice } from "@/modules/Statistics";
 
 const reducer = combineReducers({
   login: authSlice.reducer,
   accounts: accountsSlice.reducer,
   categories: categoriesSlice.reducer,
   transactions: transactionsSlice.reducer,
+  statistics: statisticsSlice.reducer,
 });
 
 export type AppState = ReturnType<typeof reducer>;
