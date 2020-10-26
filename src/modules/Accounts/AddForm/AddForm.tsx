@@ -2,10 +2,25 @@ import React from "react";
 import { Button, Input, InputGroup, Select, Text } from "sancho";
 import { FormWrapper, BtnWrap } from "./style";
 
-export class AddForm extends React.Component<{}, {}> {
+interface AccountsItemProps {
+  name: string;
+  currency: string;
+  balance: number;
+}
+
+interface AddFormProps {
+  addListItem: (AccountsItemProps) => void;
+}
+
+export class AddForm extends React.Component<AddFormProps, {}> {
+  submitHandler = (ev: React.FormEvent) => {
+    ev.preventDefault();
+    this.props.addListItem("");
+  };
+
   render() {
     return (
-      <FormWrapper>
+      <FormWrapper onSubmit={this.submitHandler}>
         <Text variant="h3">Добавление счета</Text>
         <InputGroup label="Наименование">
           <Input

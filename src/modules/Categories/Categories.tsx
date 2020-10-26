@@ -12,7 +12,9 @@ const mapStateToProps = ({ categories }: AppState) => ({
   ...categories,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  addListItemHandler: categoriesSlice.actions.addListItem,
+};
 
 export type Props = ReturnType<typeof mapStateToProps> &
   typeof mapDispatchToProps;
@@ -20,6 +22,7 @@ export type Props = ReturnType<typeof mapStateToProps> &
 export const CategoriesComponent: React.FC<Props> = ({
   categories,
   isLoading,
+  addListItemHandler,
 }) => {
   return (
     <>
@@ -31,7 +34,7 @@ export const CategoriesComponent: React.FC<Props> = ({
           <ListWrapper>
             <List list={categories} />
           </ListWrapper>
-          <AddForm />
+          <AddForm addListItem={addListItemHandler} />
         </CategoriesWrapper>
       )}
     </>

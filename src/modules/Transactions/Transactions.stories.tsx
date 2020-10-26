@@ -45,6 +45,6 @@ export const TransactionsPageComponent = () => [
         </TableBody>
       </Table>
     </TableWrapper>
-    <AddForm />
+    <AddForm key="jsx" addListItem={action("add new item in list")} />,
   </TransactionsWrapper>,
 ];

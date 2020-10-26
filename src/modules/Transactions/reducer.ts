@@ -31,11 +31,15 @@ export const transactionsSlice = createSlice({
   name: "transactions",
   initialState,
   reducers: {
-    setList: (state, { payload }: PayloadAction<any>) => {
-      console.log("payload", payload);
+    setList: (state, { payload }: PayloadAction<TransactionsProps>) => {
       return {
         ...state,
         transactions: payload,
+      };
+    },
+    addListItem: (state, { payload }: PayloadAction<TransactionsItemProps>) => {
+      return {
+        ...state,
       };
     },
   },

@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppState } from "@/AppStore";
 
+interface AProps {
+  [key: string]: AccountsProps;
+}
+
 interface AccountsProps {
   [key: number]: AccountsItemProps;
 }
@@ -32,13 +36,17 @@ export const accountsSlice = createSlice({
   name: "accounts",
   initialState,
   reducers: {
-    setList: (state, { payload }: PayloadAction<any>) => {
-      console.log('payload', payload);
+    setList: (state, { payload }: PayloadAction<AProps>) => {
       return {
         ...state,
         cash: payload.cash,
         cards: payload.cards,
         deposits: payload.deposits,
+      };
+    },
+    addListItem: (state, { payload }: PayloadAction<AccountsItemProps>) => {
+      return {
+        ...state,
       };
     },
   },

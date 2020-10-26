@@ -12,7 +12,9 @@ const mapStateToProps = ({ accounts }: AppState) => ({
   ...accounts,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  addListItemHandler: accountsSlice.actions.addListItem,
+};
 
 export type Props = ReturnType<typeof mapStateToProps> &
   typeof mapDispatchToProps;
@@ -22,6 +24,7 @@ export const AccountsComponent: React.FC<Props> = ({
   cards,
   deposits,
   isLoading,
+  addListItemHandler,
 }) => {
   return (
     <>
@@ -38,7 +41,7 @@ export const AccountsComponent: React.FC<Props> = ({
             <Text variant="h3">Депозиты</Text>
             <List list={deposits} />
           </ListWrapper>
-          <AddForm />
+          <AddForm addListItem={addListItemHandler} />
         </AccountsWrapper>
       )}
     </>

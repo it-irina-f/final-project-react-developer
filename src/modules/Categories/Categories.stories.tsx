@@ -19,6 +19,6 @@ export const CategoriesPageComponent = () => [
     <ListWrapper>
       <List list={object("CategoriesPageComponent", { ...list })} />
     </ListWrapper>
-    <AddForm />
+    <AddForm key="jsx" addListItem={action("add new item in list")} />,
   </CategoriesWrapper>,
 ];

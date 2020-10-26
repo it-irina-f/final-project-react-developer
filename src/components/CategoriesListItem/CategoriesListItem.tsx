@@ -12,9 +12,14 @@ interface CategoriesItemProps {
 interface Props {
   listItem: CategoriesItemProps;
   id: number;
+  clickFunc: (id: number) => void;
 }
 
-export const CategoriesListItem: React.FC<Props> = ({ listItem, id }) => {
+export const CategoriesListItem: React.FC<Props> = ({
+  listItem,
+  id,
+  clickFunc,
+}) => {
   return (
     <ListItemWrapper>
       <LabelWrapper>
@@ -26,11 +31,13 @@ export const CategoriesListItem: React.FC<Props> = ({ listItem, id }) => {
       </LabelWrapper>
       <ManageButton
         icon={<IconEdit />}
+        onClick={() => clickFunc(id)}
         label="editListItem"
         id={"editListItem_" + id}
       />
       <ManageButton
         icon={<IconTrash2 />}
+        onClick={() => clickFunc(id)}
         label="deleteListItem"
         id={"deleteListItem_" + id}
       />
