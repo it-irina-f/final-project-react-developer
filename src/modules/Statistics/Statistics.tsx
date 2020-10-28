@@ -18,6 +18,8 @@ export type Props = ReturnType<typeof mapStateToProps> &
 export const StatisticsComponent: React.FC<Props> = ({
   data,
   width,
+  height,
+  tickLabelsY,
   isLoading,
 }) => {
   return (
@@ -26,7 +28,12 @@ export const StatisticsComponent: React.FC<Props> = ({
       {isLoading ? (
         <Spinner label="Загрузка данных..." center />
       ) : (
-        <Chart data={data} width={width} />
+        <Chart
+          data={data}
+          tickLabelsY={tickLabelsY}
+          width={width}
+          height={height}
+        />
       )}
     </>
   );

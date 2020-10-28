@@ -1,43 +1,43 @@
 import React from "react";
-import {
-  IconEdit,
-  IconTrash2,
-  Text,
-  TableRow,
-  TableCell,
-  Spinner,
-} from "sancho";
-
 import { BarWrapper } from "./style";
-import { Chart } from "@/modules/Statistics";
 
 interface StatisticsProps {
   id: number;
-  height: number;
-  height2?: number;
   tickAxisX: string;
+}
+
+interface HeightProps {
+  [key: number]: HeightItemProps;
+}
+
+interface HeightItemProps {
+  value1: number;
+  value2?: number;
 }
 
 interface Props {
   bar: StatisticsProps;
   width: number;
+  height: HeightProps;
 }
 
-export const Bar: React.FC<Props> = ({ bar, width }) => {
-  const isDual = typeof bar.height2 !== "undefined";
+export const Bar: React.FC<Props> = ({ bar, width, height }) => {
+  const isDual = typeof height[bar.id].value2 !== "undefined";
+
+  //const isDual = false;
   const widthBar = isDual ? width / 2 : width;
 
   return (
     <>
       <BarWrapper
         widthBar={widthBar}
-        heightBar={bar.height}
+        heightBar={height[bar.id].value1}
         offset="20"
       ></BarWrapper>
       {isDual ? (
         <BarWrapper
           widthBar={widthBar}
-          heightBar={bar.height2}
+          heightBar={height[bar.id].value2}
           offset="0"
           second
         ></BarWrapper>

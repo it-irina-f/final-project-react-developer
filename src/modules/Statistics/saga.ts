@@ -15,9 +15,9 @@ export function* getStatistics() {
   }
 
   // TODO: delete mock in the future
-  statistics = mockStatistics;
+  //statistics = mockStatistics;
 
-  //statistics = mockStatistics2Bars;
+  statistics = mockStatistics2Bars;
 
   yield put(actions.setData(statistics));
 }

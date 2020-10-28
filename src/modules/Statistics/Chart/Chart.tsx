@@ -1,18 +1,34 @@
 import React, { FC } from "react";
 import { Bar } from "@/components/Bar";
 import { TickLabel } from "@/components/TickLabel";
-import { ChartWrapper, ChartAxis, ChartTicksLabel } from "./style";
+import {
+  ChartWrapper,
+  ChartAxisY,
+  ChartBars,
+  ChartAxisX,
+  ChartBarsWrap,
+} from "./style";
 
 interface StatisticsProps {
   id: number;
-  height: number;
-  height2?: number;
   tickAxisX: string;
+  amount: number;
+}
+
+interface HeightProps {
+  [key: number]: HeightItemProps;
+}
+
+interface HeightItemProps {
+  value1: number;
+  value2?: number;
 }
 
 interface Props {
   data: StatisticsProps[];
   width: number;
+  height: HeightProps;
+  tickLabelsY: number[];
 }
 
 export class Chart extends React.Component<Props, {}> {
@@ -23,16 +39,25 @@ export class Chart extends React.Component<Props, {}> {
   render() {
     const data = this.props.data;
     const width = this.props.width;
+    const height = this.props.height;
     const itemData = data.map((row) => (
-      <Bar key={row.id} bar={row} width={width} />
+      <Bar key={row.id} bar={row} width={width} height={height} />
     ));
-    const itemLabelTick = data.map((row) => (
+    const labelTickX = data.map((row) => (
       <TickLabel key={row.id} bar={row} width={width} />
     ));
+
+    const labelTickY = this.props.tickLabelsY.map((row, index) => (
+      <span key={index}>{row}</span>
+    ));
+
     return (
       <ChartWrapper>
-        <ChartAxis>{itemData}</ChartAxis>
-        <ChartTicksLabel>{itemLabelTick}</ChartTicksLabel>
+        <ChartAxisY>{labelTickY}</ChartAxisY>
+        <ChartBarsWrap>
+          <ChartBars>{itemData}</ChartBars>
+          <ChartAxisX>{labelTickX}</ChartAxisX>
+        </ChartBarsWrap>
       </ChartWrapper>
     );
   }

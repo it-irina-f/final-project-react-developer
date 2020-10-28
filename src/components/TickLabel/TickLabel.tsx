@@ -5,9 +5,8 @@ import { TickLabelWrapper } from "./style";
 
 interface StatisticsProps {
   id: number;
-  height: number;
-  height2?: number;
   tickAxisX: string;
+  amount: number;
 }
 
 interface Props {
