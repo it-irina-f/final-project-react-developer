@@ -13,10 +13,10 @@ const width = 200;
 
 const barItem = {
   id: 1603360799,
-  height: 360,
   tickAxisX: "январь 2020",
+  amount: 80000,
 };
 
-export const TransactionsListItemComponent = () => [
+export const TickLabelComponent = () => [
   <TickLabel key="jsx" bar={barItem} width={width} />,
 ];

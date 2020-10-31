@@ -27,7 +27,7 @@ export const initialState: {
   data: StatisticsProps[];
   width: number;
   height: HeightProps;
-  tickLabelsY: number[];
+  tickLabelsY: string[];
   isLoading: boolean;
 } = {
   data: [],

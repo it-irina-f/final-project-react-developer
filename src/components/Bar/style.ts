@@ -1,9 +1,14 @@
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
-export const BarWrapper = styled.div`
+export const BarsWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
+  margin-left: 20px;
+`;
+
+export const BarWrapper = styled.span`
   display: block;
-  margin-left: ${(props) => props.offset}px;
   width: ${(props) => props.widthBar}px;
   height: ${(props) => props.heightBar}px;
-  background: ${props => props.second ? '#a4d4f7' : '#1d7cd5'} ;
+  background: ${(props) => (props.second ? "#a4d4f7" : "#1d7cd5")};
 `;

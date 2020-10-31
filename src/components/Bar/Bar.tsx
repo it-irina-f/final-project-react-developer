@@ -1,5 +1,5 @@
 import React from "react";
-import { BarWrapper } from "./style";
+import { BarWrapper, BarsWrapper } from "./style";
 
 interface StatisticsProps {
   id: number;
@@ -24,26 +24,23 @@ interface Props {
 export const Bar: React.FC<Props> = ({ bar, width, height }) => {
   const isDual = typeof height[bar.id].value2 !== "undefined";
 
-  //const isDual = false;
   const widthBar = isDual ? width / 2 : width;
 
   return (
-    <>
+    <BarsWrapper data-id={bar.id}>
       <BarWrapper
         widthBar={widthBar}
         heightBar={height[bar.id].value1}
-        offset="20"
       ></BarWrapper>
       {isDual ? (
         <BarWrapper
           widthBar={widthBar}
           heightBar={height[bar.id].value2}
-          offset="0"
           second
         ></BarWrapper>
       ) : (
         <></>
       )}
-    </>
+    </BarsWrapper>
   );
 };

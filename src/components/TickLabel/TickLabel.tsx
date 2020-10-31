@@ -1,6 +1,4 @@
 import React from "react";
-import { IconEdit, IconTrash2, Text, TableRow, TableCell } from "sancho";
-
 import { TickLabelWrapper } from "./style";
 
 interface StatisticsProps {
@@ -15,7 +13,5 @@ interface Props {
 }
 
 export const TickLabel: React.FC<Props> = ({ bar, width }) => {
-  return (
-    <TickLabelWrapper widthBar={width} offset="20">{bar.tickAxisX}</TickLabelWrapper>
-  );
+  return <TickLabelWrapper widthBar={width}>{bar.tickAxisX}</TickLabelWrapper>;
 };

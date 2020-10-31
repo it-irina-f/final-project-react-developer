@@ -28,7 +28,7 @@ interface Props {
   data: StatisticsProps[];
   width: number;
   height: HeightProps;
-  tickLabelsY: number[];
+  tickLabelsY: string[];
 }
 
 export class Chart extends React.Component<Props, {}> {
@@ -53,10 +53,10 @@ export class Chart extends React.Component<Props, {}> {
 
     return (
       <ChartWrapper>
-        <ChartAxisY>{labelTickY}</ChartAxisY>
+        <ChartAxisY id="chart-axis-y">{labelTickY}</ChartAxisY>
         <ChartBarsWrap>
           <ChartBars>{itemData}</ChartBars>
-          <ChartAxisX>{labelTickX}</ChartAxisX>
+          <ChartAxisX id="chart-axis-x">{labelTickX}</ChartAxisX>
         </ChartBarsWrap>
       </ChartWrapper>
     );
