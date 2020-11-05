@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const ListWrapper = styled.div`
+export const ListContainer = styled.div`
   display: block;
   width: 50%;
 `;
