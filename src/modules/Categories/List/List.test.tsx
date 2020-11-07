@@ -14,7 +14,7 @@ describe("Component List", () => {
 
   it("should be find elements = count in array", () => {
     expect(wrapper.find('div[data-wrap="ListItemWrapper"]')).toHaveLength(
-      Object.keys(categories).length
+      keys.length
     );
   });
 
