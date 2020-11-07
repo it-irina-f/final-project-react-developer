@@ -6,8 +6,9 @@ import { AppState } from "@/AppStore";
 import { CheckState } from "@/modules/Auth/reducer";
 import { ContentWrapper } from "./style";
 import { Spinner } from "sancho";
+
 const mapStateToProps = ({ login }: AppState) => ({
-  ...login,
+  status: login.status,
 });
 
 export interface Props extends ReturnType<typeof mapStateToProps> {
@@ -15,18 +16,25 @@ export interface Props extends ReturnType<typeof mapStateToProps> {
   redirectPath?: string;
 }
 
+export const ChekingUserMsgComponent = () => (
+  <ContentWrapper>
+    <Spinner label="Загрузка данных..." center />
+  </ContentWrapper>
+);
+
+export const RedirectUserComponent: FC<{ to: string }> = ({ to }) => (
+  <Redirect to={to} />
+);
+
 export const AccessCheckerComponent: FC<Props> = ({
   children,
   status,
   redirectPath = "/",
 }) => {
   if (status === CheckState.initiated) {
-    return (
-      <ContentWrapper>
-        <Spinner label="Загрузка данных..." center />
-      </ContentWrapper>
-    );
+    return <ChekingUserMsgComponent />;
   }
+
   if (status === CheckState.failed) {
     return <Redirect to={redirectPath} />;
   }

@@ -17,10 +17,14 @@ interface Props {
   clickFunc: (id: number) => void;
 }
 
-export const TransactionsListItem: React.FC<Props> = ({ listItem, id, clickFunc }) => {
+export const TransactionsListItem: React.FC<Props> = ({
+  listItem,
+  id,
+  clickFunc,
+}) => {
   const date = new Date(id);
   return (
-    <TableRow>
+    <TableRow data-wrap="TableRow">
       <TableCell>
         <Text variant="paragraph">
           {date.getDate() +

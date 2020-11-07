@@ -37,7 +37,7 @@ export class List extends React.Component<Props, {}> {
       />
     ));
     return (
-      <ListWrapper>
+      <ListWrapper data-wrap="ListWrapper">
         {Object.keys(list).length === 0 ? "Список пустой" : itemList}
       </ListWrapper>
     );

@@ -21,7 +21,7 @@ export const AccountsListItem: React.FC<Props> = ({
   clickFunc,
 }) => {
   return (
-    <ListItemWrapper>
+    <ListItemWrapper data-wrap="ListItemWrapper">
       <LabelWrapper>
         <LabelItemWrapper>{listItem.name}</LabelItemWrapper>
         <LabelItemWrapper>
