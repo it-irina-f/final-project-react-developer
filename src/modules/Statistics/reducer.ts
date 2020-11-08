@@ -29,12 +29,14 @@ export const initialState: {
   height: HeightProps;
   tickLabelsY: string[];
   isLoading: boolean;
+  typeTransaction: string;
 } = {
   data: [],
   width: 0,
   height: {},
-  isLoading: false,
   tickLabelsY: [],
+  isLoading: false,
+  typeTransaction: "outgo",
 };
 
 export const statisticsSlice = createSlice({
@@ -81,6 +83,12 @@ export const statisticsSlice = createSlice({
         width: Math.round(width),
         tickLabelsY: tickLabelsYArray.reverse(),
         height: heightBars,
+      };
+    },
+    changeFilter: (state, { payload }: PayloadAction<string>) => {
+      return {
+        ...state,
+        typeTransaction: payload,
       };
     },
   },
