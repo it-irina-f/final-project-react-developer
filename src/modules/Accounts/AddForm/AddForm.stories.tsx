@@ -8,4 +8,6 @@ export default {
   decorators: [withKnobs],
 };
 
-export const AccountsAddFormComponent = () => [<AddForm key="jsx" />];
+export const AccountsAddFormComponent = () => [
+  <AddForm key="jsx" addListItem={action("add new item in list")} />,
+];

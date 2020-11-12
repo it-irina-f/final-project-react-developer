@@ -26,6 +26,6 @@ export const AccountsPageComponent = () => [
       <Text variant="h3">Депозиты</Text>
       <List list={object("TransactionsList", { ...listDeposits })} />
     </ListWrapper>
-    <AddForm />
+    <AddForm key="jsx" addListItem={action("add new item in list")} />,
   </AccountsWrapper>,
 ];

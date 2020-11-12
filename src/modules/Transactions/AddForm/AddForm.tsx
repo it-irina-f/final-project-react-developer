@@ -2,10 +2,25 @@ import React from "react";
 import { Button, Input, InputGroup, Select, Text, TextArea } from "sancho";
 import { FormWrapper, BtnWrap } from "./style";
 
-export class AddForm extends React.Component<{}, {}> {
+interface TransactionsItemProps {
+  amount: number;
+  category: string;
+  account: string;
+  isIncome: boolean;
+  isOutgo: boolean;
+  comment: string;
+}
+interface AddFormProps {
+  addListItem: (TransactionsItemProps) => void;
+}
+export class AddForm extends React.Component<AddFormProps, {}> {
+  submitHandler = (ev: React.FormEvent) => {
+    ev.preventDefault();
+    this.props.addListItem("");
+  };
   render() {
     return (
-      <FormWrapper>
+      <FormWrapper onSubmit={this.submitHandler}>
         <Text variant="h3">Добавление транзакции</Text>
         <InputGroup label="Тип транзакции">
           <Select inputSize="md">

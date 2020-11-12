@@ -2,10 +2,22 @@ import React from "react";
 import { Button, Input, InputGroup, Check, Text } from "sancho";
 import { FormWrapper, BtnWrap } from "./style";
 
-export class AddForm extends React.Component<{}, {}> {
+interface CategoriesItemProps {
+  name: string;
+  isIncome: boolean;
+  isOutgo: boolean;
+}
+interface AddFormProps {
+  addListItem: (CategoriesItemProps) => void;
+}
+export class AddForm extends React.Component<AddFormProps, {}> {
+  submitHandler = (ev: React.FormEvent) => {
+    ev.preventDefault();
+    this.props.addListItem("");
+  };
   render() {
     return (
-      <FormWrapper>
+      <FormWrapper onSubmit={this.submitHandler}>
         <Text variant="h3">Добавление категории</Text>
         <InputGroup label="Наименование">
           <Input

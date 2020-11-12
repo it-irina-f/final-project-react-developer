@@ -28,11 +28,15 @@ export const categoriesSlice = createSlice({
   name: "categories",
   initialState,
   reducers: {
-    setList: (state, { payload }: PayloadAction<any>) => {
-      console.log('payload', payload);
+    setList: (state, { payload }: PayloadAction<CategoriesProps>) => {
       return {
         ...state,
         categories: payload,
+      };
+    },
+    addListItem: (state, { payload }: PayloadAction<CategoriesItemProps>) => {
+      return {
+        ...state,
       };
     },
   },

@@ -22,5 +22,6 @@ export const TransactionsListItemComponent = () => [
     key="jsx"
     listItem={object("TransactionsListItem", { ...listItem })}
     id={1603380600000}
+    clickFunc={action("Click for button")}
   />,
 ];

@@ -20,7 +20,9 @@ const mapStateToProps = ({ transactions }: AppState) => ({
   ...transactions,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  addListItemHandler: transactionsSlice.actions.addListItem,
+};
 
 export type Props = ReturnType<typeof mapStateToProps> &
   typeof mapDispatchToProps;
@@ -28,6 +30,7 @@ export type Props = ReturnType<typeof mapStateToProps> &
 export const TransactionsComponent: React.FC<Props> = ({
   transactions,
   isLoading,
+  addListItemHandler,
 }) => {
   return (
     <>
@@ -62,7 +65,7 @@ export const TransactionsComponent: React.FC<Props> = ({
               </TableBody>
             </Table>
           </TableWrapper>
-          <AddForm />
+          <AddForm addListItem={addListItemHandler} />
         </TransactionsWrapper>
       )}
     </>

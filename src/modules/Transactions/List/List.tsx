@@ -23,7 +23,12 @@ export class List extends React.Component<Props, {}> {
     super(props);
   }
 
+  clickFuncHandler() {
+    console.log("click for button");
+  }
+
   render() {
+    const clickFunc = this.clickFuncHandler;
     const list = this.props.list;
     const itemList = Object.keys(list)
       .sort((a, b) => {
@@ -34,6 +39,7 @@ export class List extends React.Component<Props, {}> {
           key={key}
           listItem={list[key]}
           id={parseInt(key)}
+          clickFunc={clickFunc}
         />
       ));
     return <>{Object.keys(list).length === 0 ? "Список пустой" : itemList}</>;

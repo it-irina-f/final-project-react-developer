@@ -1,7 +1,6 @@
 import React from "react";
 import { IconEdit, IconTrash2, Text, TableRow, TableCell } from "sancho";
 import { ManageButton } from "@/components/Buttons";
-import { ListItemWrapper, LabelWrapper, LabelItemWrapper } from "./style";
 
 interface TransactionsItemProps {
   amount: number;
@@ -15,12 +14,17 @@ interface TransactionsItemProps {
 interface Props {
   listItem: TransactionsItemProps;
   id: number;
+  clickFunc: (id: number) => void;
 }
 
-export const TransactionsListItem: React.FC<Props> = ({ listItem, id }) => {
+export const TransactionsListItem: React.FC<Props> = ({
+  listItem,
+  id,
+  clickFunc,
+}) => {
   const date = new Date(id);
   return (
-    <TableRow>
+    <TableRow data-wrap="TableRow">
       <TableCell>
         <Text variant="paragraph">
           {date.getDate() +
@@ -50,11 +54,13 @@ export const TransactionsListItem: React.FC<Props> = ({ listItem, id }) => {
       <TableCell>
         <ManageButton
           icon={<IconEdit />}
+          onClick={() => clickFunc(id)}
           label="editListItem"
           id={"editListItem_" + id}
         />
         <ManageButton
           icon={<IconTrash2 />}
+          onClick={() => clickFunc(id)}
           label="deleteListItem"
           id={"deleteListItem_" + id}
         />

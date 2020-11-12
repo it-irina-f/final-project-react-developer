@@ -5,14 +5,16 @@ import { AddForm } from "@/modules/Accounts/AddForm";
 import { AppState } from "@/AppStore";
 import { accountsSlice } from "./reducer";
 import { connect } from "react-redux";
-import { ListWrapper, AccountsWrapper } from "./style";
+import { ListContainer, AccountsWrapper } from "./style";
 import { Spinner, Text } from "sancho";
 
 const mapStateToProps = ({ accounts }: AppState) => ({
   ...accounts,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  addListItemHandler: accountsSlice.actions.addListItem,
+};
 
 export type Props = ReturnType<typeof mapStateToProps> &
   typeof mapDispatchToProps;
@@ -22,6 +24,7 @@ export const AccountsComponent: React.FC<Props> = ({
   cards,
   deposits,
   isLoading,
+  addListItemHandler,
 }) => {
   return (
     <>
@@ -30,15 +33,15 @@ export const AccountsComponent: React.FC<Props> = ({
         <Spinner label="Загрузка данных..." center />
       ) : (
         <AccountsWrapper>
-          <ListWrapper>
+          <ListContainer data-wrap="ListContainer">
             <Text variant="h3">Наличные</Text>
             <List list={cash} />
             <Text variant="h3">Банковские карты</Text>
             <List list={cards} />
             <Text variant="h3">Депозиты</Text>
             <List list={deposits} />
-          </ListWrapper>
-          <AddForm />
+          </ListContainer>
+          <AddForm addListItem={addListItemHandler} />
         </AccountsWrapper>
       )}
     </>
