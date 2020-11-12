@@ -8,3 +8,4 @@ export {
   transactionsSlice,
   getTransactionsModule,
 } from "./Transactions";
+export { Statistics, statisticsSlice, getStatisticsModule } from "./Statistics";
