@@ -3,25 +3,30 @@ import { select, takeEvery, take, call, put, fork } from "redux-saga/effects";
 
 import { actions, selectors } from "./reducer";
 
-import { mockStatistics, mockStatistics2Bars } from "./mock";
+import {
+  mockStatisticsIncome,
+  mockStatisticsIncomeOutgo,
+  mockStatisticsOutgo,
+} from "./mock";
 
 export function* getStatistics() {
   const name = yield select(selectors.login);
-  let statistics;
-
-  if (isEmpty(statistics) || statistics === null) {
-    statistics = [];
-  } else {
-  }
+  const statistics = yield select(selectors.statistics);
+  let statisticsData;
 
   // TODO: delete mock in the future
-  //statistics = mockStatistics;
+  if (statistics.typeTransaction === "income") {
+    statisticsData = mockStatisticsIncome;
+  } else if (statistics.typeTransaction === "outgo") {
+    statisticsData = mockStatisticsOutgo;
+  } else if (statistics.typeTransaction === "income_outgo") {
+    statisticsData = mockStatisticsIncomeOutgo;
+  }
 
-  statistics = mockStatistics2Bars;
-
-  yield put(actions.setData(statistics));
+  yield put(actions.setData(statisticsData));
 }
 
 export function* statisticsSaga() {
   yield fork(getStatistics);
+  yield takeEvery(actions.changeFilter.type, getStatistics);
 }

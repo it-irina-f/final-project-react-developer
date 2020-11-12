@@ -2,7 +2,10 @@ import React from "react";
 import { action } from "@storybook/addon-actions";
 import { withKnobs, object, array } from "@storybook/addon-knobs";
 import { Chart } from "./Chart";
-import { mockStatistics, mockStatistics2Bars } from "@/modules/Statistics/mock";
+import {
+  mockStatisticsIncome,
+  mockStatisticsIncomeOutgo,
+} from "@/modules/Statistics/mock";
 
 export default {
   title: "Chart Component",
@@ -10,8 +13,8 @@ export default {
 };
 
 const width = 83;
-const list = mockStatistics;
-const list2 = mockStatistics2Bars;
+const list = mockStatisticsIncome;
+const list2 = mockStatisticsIncomeOutgo;
 
 const height = {
   1603360799: {

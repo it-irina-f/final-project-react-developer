@@ -1,12 +1,15 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
 import renderer from "react-test-renderer";
-import { mockStatistics, mockStatistics2Bars } from "@/modules/Statistics/mock";
+import {
+  mockStatisticsIncome,
+  mockStatisticsIncomeOutgo,
+} from "@/modules/Statistics/mock";
 import { Chart } from "./Chart";
 
 const width = 80;
-const list = mockStatistics;
-const list2 = mockStatistics2Bars;
+const list = mockStatisticsIncome;
+const list2 = mockStatisticsIncomeOutgo;
 
 const height = {
   1603360799: {

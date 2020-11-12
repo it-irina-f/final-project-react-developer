@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Chart } from "@/modules/Statistics/Chart";
+import { Filters } from "@/modules/Statistics/Filters";
 
 import { AppState } from "@/AppStore";
 import { statisticsSlice } from "./reducer";
@@ -10,7 +11,9 @@ const mapStateToProps = ({ statistics }: AppState) => ({
   ...statistics,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  changeFilterHandler: statisticsSlice.actions.changeFilter,
+};
 
 export type Props = ReturnType<typeof mapStateToProps> &
   typeof mapDispatchToProps;
@@ -21,6 +24,7 @@ export const StatisticsComponent: React.FC<Props> = ({
   height,
   tickLabelsY,
   isLoading,
+  changeFilterHandler,
 }) => {
   return (
     <>
@@ -28,12 +32,15 @@ export const StatisticsComponent: React.FC<Props> = ({
       {isLoading ? (
         <Spinner label="Загрузка данных..." center />
       ) : (
-        <Chart
-          data={data}
-          tickLabelsY={tickLabelsY}
-          width={width}
-          height={height}
-        />
+        <>
+          <Filters changeFilter={changeFilterHandler} />
+          <Chart
+            data={data}
+            tickLabelsY={tickLabelsY}
+            width={width}
+            height={height}
+          />
+        </>
       )}
     </>
   );
