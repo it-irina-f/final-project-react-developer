@@ -16,8 +16,8 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, "/dist"),
-        filename: "./final-project-react-developer/index.js",
-        publicPath: "/",
+        filename: "./index.js",
+        publicPath: "",
     },
     module: {
         rules: [

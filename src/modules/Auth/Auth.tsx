@@ -50,7 +50,7 @@ export const AuthComponent: React.FC<Props> = ({ username, login }) => {
       </Button>
     </Form>
   ) : (
-    <Redirect to="/transactions" />
+    <Redirect to="/final-project-react-developer/statistics" />
   );
 };
 

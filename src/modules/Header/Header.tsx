@@ -30,10 +30,10 @@ class HeaderComponent extends PureComponent<Props> {
       !isEmpty(username) && (
         <HeaderWrap>
           <Nav>
-            <Link href="/transactions">Транзакции</Link>
-            <Link href="/accounts">Счета</Link>
-            <Link href="/categories">Категории</Link>
-            <Link href="/statistics">Статистика</Link>
+            <Link href="./transactions">Транзакции</Link>
+            <Link href="./accounts">Счета</Link>
+            <Link href="./categories">Категории</Link>
+            <Link href="./statistics">Статистика</Link>
           </Nav>
           <HeaderLoginWrap>
             <IconUser />
