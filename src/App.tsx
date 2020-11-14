@@ -2,6 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import {
   BrowserRouter as Router,
+  HashRouter,
   Switch,
   Route,
   Redirect,
@@ -19,29 +20,28 @@ import { store } from "@/AppStore";
 
 export const App: React.FC<{}> = () => (
   <Provider store={store}>
-    <Router>
+    <HashRouter>
       <Header />
       <Switch>
-        <Route exact path="/final-project-react-developer/">
+        <Route exact path="/">
           <Auth />
         </Route>
-        <Route exact path="/final-project-react-developer/transactions">
+        <Route exact path="/transactions">
           <TransactionsScreen />
         </Route>
-        <Route exact path="/final-project-react-developer/accounts">
+        <Route exact path="/accounts">
           <AccountsScreen />
         </Route>
-        <Route exact path="/final-project-react-developer/categories">
+        <Route exact path="/categories">
           <CategoriesScreen />
         </Route>
-        <Route exact path="/final-project-react-developer/statistics">
+        <Route exact path="/statistics">
           <StatisticsScreen />
         </Route>
-        <Redirect exact from="/" to="/final-project-react-developer" />
         <Route path="*">
           <Error404 />
         </Route>
       </Switch>
-    </Router>
+    </HashRouter>
   </Provider>
 );
