@@ -25,7 +25,7 @@
   "bugs": {
     "url": "https://github.com/it-irina-f/final-project-react-developer/issues"
   },
-  "homepage": "https://github.com/it-irina-f/final-project-react-developer#readme",
+  "homepage": "https://it-irina-f.github.io/final-project-react-developer",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.11.6",
