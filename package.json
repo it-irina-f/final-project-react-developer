@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npx webpack-dev-server --mode development --hot",
-    "build-prod": "npx webpack --mode production",
+    "build": "npx webpack --mode production",
     "test": "npx jest",
     "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix ./",
     "loki:update": "npm run build-storybook && npx loki update --requireReference --reactUri file:./storybook-static",
@@ -14,7 +14,8 @@
     "check": "npm run lint && npm test && npm run test:loki",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "e2e": "npx jest -c jest.e2e.config.js e2e"
+    "e2e": "npx jest -c jest.e2e.config.js e2e",
+    "deploy" : "npm run build&&gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -79,6 +80,7 @@
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.2",
     "faker": "^5.1.0",
+    "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^4.5.0",
     "jest": "^25.5.4",
     "jest-emotion": "^10.0.32",
