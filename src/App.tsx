@@ -22,13 +22,25 @@ export const App: React.FC<{}> = () => (
     <Router>
       <Header />
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/final-project-react-developer">
           <Auth />
         </Route>
-        <Route path="/transactions" render={() => <TransactionsScreen />} />
-        <Route path="/accounts" render={() => <AccountsScreen />} />
-        <Route path="/categories" render={() => <CategoriesScreen />} />
-        <Route path="/statistics" render={() => <StatisticsScreen />} />
+        <Route
+          path="/final-project-react-developer/transactions"
+          render={() => <TransactionsScreen />}
+        />
+        <Route
+          path="/final-project-react-developer/accounts"
+          render={() => <AccountsScreen />}
+        />
+        <Route
+          path="/final-project-react-developer/categories"
+          render={() => <CategoriesScreen />}
+        />
+        <Route
+          path="/final-project-react-developer/statistics"
+          render={() => <StatisticsScreen />}
+        />
         <Route path="*">
           <Error404 />
         </Route>

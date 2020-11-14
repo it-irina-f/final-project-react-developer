@@ -15,11 +15,11 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "e2e": "npx jest -c jest.e2e.config.js e2e",
-    "deploy" : "npm run build&&gh-pages -d build"
+    "deploy": "npm run build&&gh-pages -d dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/it-irina-f/final-project-react-developer.git"
+    "url": "git+ "
   },
   "author": "i.fedorova",
   "license": "ISC",
