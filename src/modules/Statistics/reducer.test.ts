@@ -4,6 +4,9 @@ import {
   mockStatisticsIncome,
   mockStatisticsIncomeOutgo,
   mockStatisticsOutgo,
+  categoriesOutgo,
+  categoriesIncome,
+  categoriesIncomeOutgo,
 } from "./mock";
 
 const appStateOutgo = getAppState(mockStatisticsOutgo);
@@ -49,6 +52,42 @@ describe("Statistics reducer", () => {
     expect(reducer(appStateIncome, actions.changeFilter("outgo"))).toEqual({
       ...appStateIncome,
       typeTransaction: "outgo",
+    });
+  });
+
+  it("change Filter-Category: should be update typeCategory", () => {
+    expect(
+      reducer(appStateOutgo, actions.changeCategory("1603360800"))
+    ).toEqual({
+      ...appStateOutgo,
+      typeCategory: "1603360800",
+    });
+  });
+
+  it("set Categories for typeTransaction=outgo", () => {
+    expect(
+      reducer(appStateOutgo, actions.setCategories(categoriesOutgo))
+    ).toEqual({
+      ...appStateOutgo,
+      categories: categoriesOutgo,
+    });
+  });
+
+  it("set Categories for typeTransaction=income", () => {
+    expect(
+      reducer(appStateIncome, actions.setCategories(categoriesIncome))
+    ).toEqual({
+      ...appStateIncome,
+      categories: categoriesIncome,
+    });
+  });
+
+  it("set Categories for typeTransaction=income-outgo", () => {
+    expect(
+      reducer(appStateIncomeOutgo, actions.setCategories(categoriesIncomeOutgo))
+    ).toEqual({
+      ...appStateIncomeOutgo,
+      categories: categoriesIncomeOutgo,
     });
   });
 });
