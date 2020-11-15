@@ -13,6 +13,7 @@ const mapStateToProps = ({ statistics }: AppState) => ({
 
 const mapDispatchToProps = {
   changeFilterHandler: statisticsSlice.actions.changeFilter,
+  changeCategoryHandler: statisticsSlice.actions.changeCategory,
 };
 
 export type Props = ReturnType<typeof mapStateToProps> &
@@ -24,7 +25,9 @@ export const StatisticsComponent: React.FC<Props> = ({
   height,
   tickLabelsY,
   isLoading,
+  categories,
   changeFilterHandler,
+  changeCategoryHandler,
 }) => {
   return (
     <>
@@ -33,7 +36,11 @@ export const StatisticsComponent: React.FC<Props> = ({
         <Spinner label="Загрузка данных..." center />
       ) : (
         <>
-          <Filters changeFilter={changeFilterHandler} />
+          <Filters
+            categories={categories}
+            changeFilter={changeFilterHandler}
+            changeCategory={changeCategoryHandler}
+          />
           <Chart
             data={data}
             tickLabelsY={tickLabelsY}
