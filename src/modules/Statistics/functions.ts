@@ -39,5 +39,7 @@ export function getAppState(data) {
     height: heightBars,
     isLoading: false,
     typeTransaction: "outgo",
+    typeCategory: "",
+    categories: {},
   };
 }
