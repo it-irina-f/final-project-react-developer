@@ -18,6 +18,16 @@ interface HeightItemProps {
   value2?: number;
 }
 
+interface CategoriesProps {
+  [key: number]: CategoriesItemProps;
+}
+
+interface CategoriesItemProps {
+  name: string;
+  isIncome: boolean;
+  isOutgo: boolean;
+}
+
 export const selectors = {
   login: ({ login }: AppState) => login,
   statistics: ({ statistics }: AppState) => statistics,
@@ -30,6 +40,8 @@ export const initialState: {
   tickLabelsY: string[];
   isLoading: boolean;
   typeTransaction: string;
+  typeCategory: string;
+  categories: CategoriesProps;
 } = {
   data: [],
   width: 0,
@@ -37,6 +49,8 @@ export const initialState: {
   tickLabelsY: [],
   isLoading: false,
   typeTransaction: "outgo",
+  typeCategory: "",
+  categories: {},
 };
 
 export const statisticsSlice = createSlice({
@@ -89,6 +103,19 @@ export const statisticsSlice = createSlice({
       return {
         ...state,
         typeTransaction: payload,
+        typeCategory: "",
+      };
+    },
+    changeCategory: (state, { payload }: PayloadAction<string>) => {
+      return {
+        ...state,
+        typeCategory: payload,
+      };
+    },
+    setCategories: (state, { payload }: PayloadAction<CategoriesProps>) => {
+      return {
+        ...state,
+        categories: payload,
       };
     },
   },
