@@ -35,12 +35,12 @@ export const categoriesSlice = createSlice({
       };
     },
     addListItem: (state, { payload }: PayloadAction<CategoriesItemProps>) => {
-      const categories = { ...state.categories };
+      const categories = {};
       categories[Date.now()] = payload;
-      return {
-        ...state,
-        categories: categories,
-      };
+
+      Object.assign(state.categories, categories);
+
+      return state;
     },
   },
 });
