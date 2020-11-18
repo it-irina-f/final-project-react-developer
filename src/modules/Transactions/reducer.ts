@@ -43,7 +43,6 @@ export const transactionsSlice = createSlice({
 
       Object.assign(state.transactions, transactions);
 
-      return state;
     },
   },
 });

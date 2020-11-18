@@ -50,8 +50,6 @@ export const accountsSlice = createSlice({
           Object.assign(state[item], payload[item]);
         }
       });
-
-      return state;
     },
   },
 });

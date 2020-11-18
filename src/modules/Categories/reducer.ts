@@ -40,7 +40,6 @@ export const categoriesSlice = createSlice({
 
       Object.assign(state.categories, categories);
 
-      return state;
     },
   },
 });
