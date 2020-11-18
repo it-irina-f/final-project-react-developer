@@ -14,24 +14,15 @@ interface AddFormProps {
 
 export class AddForm extends React.Component<AddFormProps, {}> {
   state = {
-    textInput: "",
-    balanceInput: "",
+    nameListItem: "",
+    balanceListItem: "",
   };
 
   inputChangeHandle = (ev: React.ChangeEvent) => {
-    const value = (ev.target as HTMLInputElement).value;
-
-    switch ((ev.target as HTMLInputElement).name) {
-      case "balanceListItem":
-        return this.setState({
-          balanceInput: value,
-        });
-
-      case "nameListItem":
-        return this.setState({
-          textInput: value,
-        });
-    }
+    this.setState({
+      [(ev.target as HTMLInputElement).name]: (ev.target as HTMLInputElement)
+        .value,
+    });
   };
 
   submitHandler = (ev: React.FormEvent<HTMLFormElement>) => {
@@ -63,7 +54,7 @@ export class AddForm extends React.Component<AddFormProps, {}> {
             placeholder="Наименование"
             type="text"
             name="nameListItem"
-            value={this.state.textInput}
+            value={this.state.nameListItem}
             onChange={this.inputChangeHandle}
           />
         </InputGroup>
@@ -87,7 +78,7 @@ export class AddForm extends React.Component<AddFormProps, {}> {
             placeholder="Начальный остаток"
             type="text"
             name="balanceListItem"
-            value={this.state.balanceInput}
+            value={this.state.balanceListItem}
             onChange={this.inputChangeHandle}
           />
         </InputGroup>
