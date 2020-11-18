@@ -2,10 +2,10 @@ import React from "react";
 import { Provider } from "react-redux";
 import {
   BrowserRouter as Router,
+  Redirect,
   HashRouter,
   Switch,
   Route,
-  Redirect,
 } from "react-router-dom";
 
 import { Auth, Header } from "@/modules";
