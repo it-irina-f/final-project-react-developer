@@ -38,13 +38,12 @@ export const transactionsSlice = createSlice({
       };
     },
     addListItem: (state, { payload }: PayloadAction<TransactionsItemProps>) => {
-      const transactions = { ...state.transactions };
+      const transactions = {};
       transactions[Date.now()] = payload;
 
-      return {
-        ...state,
-        transactions: transactions,
-      };
+      Object.assign(state.transactions, transactions);
+
+      return state;
     },
   },
 });

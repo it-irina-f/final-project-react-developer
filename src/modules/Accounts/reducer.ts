@@ -45,28 +45,13 @@ export const accountsSlice = createSlice({
       };
     },
     addListItem: (state, { payload }: PayloadAction<AProps>) => {
-      const cash = { ...state.cash };
-      const cards = { ...state.cards };
-      const deposits = { ...state.deposits };
+      ["cash", "cards", "deposits"].forEach((item) => {
+        if (payload[item] !== undefined) {
+          Object.assign(state[item], payload[item]);
+        }
+      });
 
-      if (typeof payload.cash !== "undefined") {
-        Object.assign(cash, payload.cash);
-      }
-
-      if (typeof payload.cards !== "undefined") {
-        Object.assign(cards, payload.cards);
-      }
-
-      if (typeof payload.deposits !== "undefined") {
-        Object.assign(deposits, payload.deposits);
-      }
-
-      return {
-        ...state,
-        cash: cash,
-        cards: cards,
-        deposits: deposits,
-      };
+      return state;
     },
   },
 });

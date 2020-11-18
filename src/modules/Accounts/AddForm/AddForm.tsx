@@ -19,15 +19,19 @@ export class AddForm extends React.Component<AddFormProps, {}> {
   };
 
   inputChangeHandle = (ev: React.ChangeEvent) => {
-    this.setState({
-      textInput: (ev.target as HTMLInputElement).value,
-    });
-  };
+    const value = (ev.target as HTMLInputElement).value;
 
-  balanceChangeHandle = (ev: React.ChangeEvent) => {
-    this.setState({
-      balanceInput: (ev.target as HTMLInputElement).value,
-    });
+    switch ((ev.target as HTMLInputElement).name) {
+      case "balanceListItem":
+        return this.setState({
+          balanceInput: value,
+        });
+
+      case "nameListItem":
+        return this.setState({
+          textInput: value,
+        });
+    }
   };
 
   submitHandler = (ev: React.FormEvent<HTMLFormElement>) => {
@@ -84,7 +88,7 @@ export class AddForm extends React.Component<AddFormProps, {}> {
             type="text"
             name="balanceListItem"
             value={this.state.balanceInput}
-            onChange={this.balanceChangeHandle}
+            onChange={this.inputChangeHandle}
           />
         </InputGroup>
         <BtnWrap>
