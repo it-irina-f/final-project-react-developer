@@ -35,8 +35,11 @@ export const categoriesSlice = createSlice({
       };
     },
     addListItem: (state, { payload }: PayloadAction<CategoriesItemProps>) => {
+      const categories = { ...state.categories };
+      categories[Date.now()] = payload;
       return {
         ...state,
+        categories: categories,
       };
     },
   },
