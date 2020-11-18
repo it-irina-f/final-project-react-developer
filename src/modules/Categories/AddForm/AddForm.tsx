@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Input, InputGroup, Check, Text } from "sancho";
+import { Button, Input, InputGroup, Check, Text, Select } from "sancho";
 import { FormWrapper, BtnWrap } from "./style";
 
 interface CategoriesItemProps {
@@ -11,10 +11,28 @@ interface AddFormProps {
   addListItem: (CategoriesItemProps) => void;
 }
 export class AddForm extends React.Component<AddFormProps, {}> {
-  submitHandler = (ev: React.FormEvent) => {
-    ev.preventDefault();
-    this.props.addListItem("");
+  state = {
+    textInput: "",
   };
+
+  inputChangeHandle = (ev: React.ChangeEvent) => {
+    this.setState({
+      textInput: (ev.target as HTMLInputElement).value,
+    });
+  };
+
+  submitHandler = (ev: React.FormEvent<HTMLFormElement>) => {
+    ev.preventDefault();
+
+    const payload = {
+      name: (ev.currentTarget.elements[0] as HTMLInputElement).value,
+      isOutgo: (ev.currentTarget.elements[1] as HTMLInputElement).checked,
+      isIncome: (ev.currentTarget.elements[2] as HTMLInputElement).checked,
+    };
+
+    this.props.addListItem(payload);
+  };
+
   render() {
     return (
       <FormWrapper onSubmit={this.submitHandler}>
@@ -26,13 +44,14 @@ export class AddForm extends React.Component<AddFormProps, {}> {
             placeholder="Наименование"
             type="text"
             name="nameListItem"
-            value=""
+            value={this.state.textInput}
+            onChange={this.inputChangeHandle}
           />
         </InputGroup>
         <InputGroup label="Показывать в списке">
           <div>
-            <Check label="в расходе" />
-            <Check label="в доходе" />
+            <Check label="в расходе" name="outgo" />
+            <Check label="в доходе" name="income" />
           </div>
         </InputGroup>
         <BtnWrap>

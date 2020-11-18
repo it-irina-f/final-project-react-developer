@@ -13,9 +13,39 @@ interface AddFormProps {
 }
 
 export class AddForm extends React.Component<AddFormProps, {}> {
-  submitHandler = (ev: React.FormEvent) => {
+  state = {
+    textInput: "",
+    balanceInput: "",
+  };
+
+  inputChangeHandle = (ev: React.ChangeEvent) => {
+    this.setState({
+      textInput: (ev.target as HTMLInputElement).value,
+    });
+  };
+
+  balanceChangeHandle = (ev: React.ChangeEvent) => {
+    this.setState({
+      balanceInput: (ev.target as HTMLInputElement).value,
+    });
+  };
+
+  submitHandler = (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
-    this.props.addListItem("");
+    const account = (ev.currentTarget.elements[1] as HTMLInputElement).value;
+    const id = Date.now();
+    const payloadItem = {};
+    payloadItem[id] = {
+      name: (ev.currentTarget.elements[0] as HTMLInputElement).value,
+      currency: (ev.currentTarget.elements[2] as HTMLInputElement).value,
+      balance: parseFloat(
+        (ev.currentTarget.elements[3] as HTMLInputElement).value
+      ),
+    };
+    const payload = {};
+    payload[account] = payloadItem;
+
+    this.props.addListItem(payload);
   };
 
   render() {
@@ -29,7 +59,8 @@ export class AddForm extends React.Component<AddFormProps, {}> {
             placeholder="Наименование"
             type="text"
             name="nameListItem"
-            value=""
+            value={this.state.textInput}
+            onChange={this.inputChangeHandle}
           />
         </InputGroup>
         <InputGroup label="Тип счета">
@@ -52,7 +83,8 @@ export class AddForm extends React.Component<AddFormProps, {}> {
             placeholder="Начальный остаток"
             type="text"
             name="balanceListItem"
-            value=""
+            value={this.state.balanceInput}
+            onChange={this.balanceChangeHandle}
           />
         </InputGroup>
         <BtnWrap>

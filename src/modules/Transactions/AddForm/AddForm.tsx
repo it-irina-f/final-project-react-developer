@@ -14,18 +14,42 @@ interface AddFormProps {
   addListItem: (TransactionsItemProps) => void;
 }
 export class AddForm extends React.Component<AddFormProps, {}> {
-  submitHandler = (ev: React.FormEvent) => {
-    ev.preventDefault();
-    this.props.addListItem("");
+  state = {
+    textInput: "",
   };
+
+  inputChangeHandle = (ev: React.ChangeEvent) => {
+    this.setState({
+      textInput: (ev.target as HTMLInputElement).value,
+    });
+  };
+
+  submitHandler = (ev: React.FormEvent<HTMLFormElement>) => {
+    ev.preventDefault();
+    const payload = {
+      amount: parseFloat(
+        (ev.currentTarget.elements[1] as HTMLInputElement).value
+      ),
+      category: (ev.currentTarget.elements[2] as HTMLInputElement).value,
+      account: (ev.currentTarget.elements[3] as HTMLInputElement).value,
+      isIncome:
+        (ev.currentTarget.elements[0] as HTMLInputElement).value === "income",
+      isOutgo:
+        (ev.currentTarget.elements[0] as HTMLInputElement).value === "outgo",
+      comment: (ev.currentTarget.elements[4] as HTMLInputElement).value,
+    };
+
+    this.props.addListItem(payload);
+  };
+
   render() {
     return (
       <FormWrapper onSubmit={this.submitHandler}>
         <Text variant="h3">Добавление транзакции</Text>
         <InputGroup label="Тип транзакции">
           <Select inputSize="md">
-            <option value="income">расход</option>
-            <option value="outgo">доход</option>
+            <option value="outgo">расход</option>
+            <option value="income">доход</option>
           </Select>
         </InputGroup>
         <InputGroup label="Сумма">
@@ -35,16 +59,17 @@ export class AddForm extends React.Component<AddFormProps, {}> {
             placeholder="Сумма"
             type="text"
             name="amount"
-            value=""
+            value={this.state.textInput}
+            onChange={this.inputChangeHandle}
           />
         </InputGroup>
         <InputGroup label="Категория">
           <Select inputSize="md">
-            <option value="cash">ЖКХ</option>
-            <option value="cards">Продукты</option>
-            <option value="cards">Кафе/рестораны</option>
-            <option value="cards">Развлечения</option>
-            <option value="cards">Freelance</option>
+            <option value="ЖКХ">ЖКХ</option>
+            <option value="Продукты">Продукты</option>
+            <option value="Кафе/рестораны">Кафе/рестораны</option>
+            <option value="Развлечения">Развлечения</option>
+            <option value="Freelance">Freelance</option>
           </Select>
         </InputGroup>
         <InputGroup label="Счет">
